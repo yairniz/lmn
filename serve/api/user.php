@@ -11,4 +11,9 @@
     echo json_encode($data);
   }
 
+  if ($p["action"]=="getUser") {
+    $data = User::getUser($p["username"], $p["password"], $p["searchUser"]);
+    echo json_encode($data);
+  }
+
 

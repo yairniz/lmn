@@ -47,4 +47,10 @@ class User {
       return array_map($func, $users);
     }
   }
+
+  public static function getUser($username, $password, $searchUser) {
+    if ($users = self::usersIfApproved($username, $password)) {
+      return $users[$searchUser];
+    }
+  }
 }

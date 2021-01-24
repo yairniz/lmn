@@ -43,16 +43,41 @@ class UserLi extends HTMLLIElement {
   }
 
   connectedCallback() {
-    this.addDiv(this.getAttribute("username"));
+    this.uDiv = this.addDiv(this.getAttribute("username"), "username");
     this.addDiv(this.getAttribute("last"));
     this.addDiv(this.getAttribute("ip"));
+
+    this.uDiv.addEventListener("click", this.userClick);
   }
 
-  addDiv(content) {
+  disconnectedCallback() {
+    this.uDiv.removeEventListener("click", this.userClick);
+  }
+
+  userClick = (e) => {
+    const elm = e.target;
+    const urlParams = new URLSearchParams(window.location.search);
+
+    User.fetchUser(urlParams.get("username"), urlParams.get("password"), elm.innerHTML)
+    .then(response => response.json())
+    .then(userJson => {
+      console.log(userJson);
+      const popup = document.createElement("div");
+      popup.innerHTML = `<div>Logins: ${ userJson.sl }</div><div>User Agent: ${ userJson.ua }</div>`;
+      elm.appendChild(popup);
+    });
+  };
+
+  addDiv(content, className) {
     const newDiv = document.createElement("div");
 
+    if (className) {
+      newDiv.className = className
+    }
     newDiv.innerHTML = content;
     this.appendChild(newDiv);
+
+    return newDiv;
   }
 }
 customElements.define("user-li", UserLi, { extends: "li" });

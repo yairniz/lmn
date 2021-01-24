@@ -13,3 +13,23 @@
 .user-list li div {
   flex: 1;
 }
+
+.username {
+  position: relative;
+}
+
+.username:hover > div {
+  display: block;
+}
+
+.username > div {
+  display: none;
+  position: absolute;
+  font-size: 10px;
+  z-index: 3;
+  top: 20px;
+  width: 150px;
+  border: 1px solid #bbb;
+  background: #cbb;
+  border-radius: 3px;
+}
