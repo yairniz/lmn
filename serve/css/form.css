@@ -1,0 +1,10 @@
+form {
+  width: 350px;
+  height: 250px;
+}
+input {
+  width: 250px;
+  height: 30px;
+  font-size: 16px;
+  padding: 5px;
+}

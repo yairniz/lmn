@@ -1,0 +1,15 @@
+.user-list {
+  list-style-type: none;
+  padding: 0;
+}
+.user-list li:first-child {
+  text-decoration: underline;
+}
+
+.user-list li {
+  display: flex;
+  width: 450px;
+}
+.user-list li div {
+  flex: 1;
+}

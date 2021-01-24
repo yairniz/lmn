@@ -1,0 +1,8 @@
+.main-box {
+  width: 500px;
+  height: 400px;
+  overflow-y: auto;
+}
+ul {
+  flex: 1;
+}
